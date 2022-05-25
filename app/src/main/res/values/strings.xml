@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">GoogleMapAssignment</string>
     <string name="title_activity_maps">MapsActivity</string>
+
+    <!--Locations-->
+    <string name="str_city_kochi">Marker in Kochi</string>
+    <string name="str_city_coimbatore">Marker in Coimbatore</string>
+    <string name="str_city_madurai">Marker in Madurai</string>
+    <string name="str_city_munnar">Marker in Munnar</string>
+
+    <!--API secret key-->
+    <string name="str_google_maps_key">AIzaSyAdMXon8_VfmKuAySlXPcsqPkuFMCLhiFE</string>
 </resources>
