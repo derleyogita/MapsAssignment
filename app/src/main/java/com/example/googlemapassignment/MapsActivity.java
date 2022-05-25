@@ -1,10 +1,10 @@
 package com.example.googlemapassignment;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 
 import android.os.Bundle;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -12,10 +12,23 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.example.googlemapassignment.databinding.ActivityMapsBinding;
 
+import java.util.List;
+
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
+    /**
+     * Google map
+     */
     private GoogleMap mMap;
+    /**
+     * Bind layout data
+     */
     private ActivityMapsBinding binding;
+
+    /**
+     * Define list to get all lat-long for the route
+     */
+    private List<LatLng> path;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,19 +46,31 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
+     * This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
      */
     @Override
-    public void onMapReady(GoogleMap googleMap) {
+    public void onMapReady(@NonNull GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        // Add a marker in Kochi(start location) and move the camera
+        LatLng kochi = new LatLng(9.939093, 76.270523);
+        mMap.addMarker(new MarkerOptions().position(kochi).title(getString(R.string.str_city_kochi)));
+
+        mMap = googleMap;
+        //second location
+        LatLng coimbatore = new LatLng(11.004556, 76.961632);
+        mMap.addMarker(new MarkerOptions().position(coimbatore).title(getString(R.string.str_city_coimbatore)));
+
+        //third location
+        LatLng madurai = new LatLng(9.939093, 78.121719);
+        mMap.addMarker(new MarkerOptions().position(madurai).title(getString(R.string.str_city_madurai)));
+
+        //fourth location
+        LatLng munnar = new LatLng(10.089167, 77.059723);
+        mMap.addMarker(new MarkerOptions().position(munnar).title(getString(R.string.str_city_munnar)));
+
+        //Back to start location
+        mMap.addMarker(new MarkerOptions().position(kochi).title(getString(R.string.str_city_kochi)));
     }
 }
